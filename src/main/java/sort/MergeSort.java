@@ -1,32 +1,25 @@
 package sort;
 
-public class MergeSort implements SortTemplate {
+public class MergeSort implements SortAlgorithm {
+
     @Override
-    public void sort(int[] arr) {
-        if (arr == null || arr.length < 2) {
+    public void sort(int[] arr, int low, int high) {
+        if (high <= low) {
             return;
         }
 
-        sort(arr, 0, arr.length - 1);
+        int mid = low + (high - low) / 2;
+        sort(arr, low, mid);
+        sort(arr, mid + 1, high);
+        merge(arr, low, mid, high);
     }
 
-    private void sort(int[] arr, int lo, int hi) {
-        if(hi <= lo) {
-            return;
-        }
-
-        int mid = lo + (hi - lo) / 2;
-        sort(arr, lo, mid);
-        sort(arr, mid + 1, hi);
-        merge(arr, lo, mid, hi);
-    }
-
-    private void merge(int[] arr, int lo, int mid, int hi) {
-        int[] helper = new int[hi - lo + 1];
-        int i = lo;
+    private void merge(int[] arr, int low, int mid, int high) {
+        int[] helper = new int[high - low + 1];
+        int i = low;
         int j = mid + 1;
         int index = 0;
-        while(i <= mid && j <= hi) {
+        while (i <= mid && j <= high) {
             helper[index++] = arr[i] < arr[j] ? arr[i++] : arr[j++];
         }
 
@@ -34,15 +27,10 @@ public class MergeSort implements SortTemplate {
             helper[index++] = arr[i++];
         }
 
-        while (j <= hi) {
+        while (j <= high) {
             helper[index++] = arr[j++];
         }
 
-        for (int k = 0; k < helper.length; k++) {
-            arr[lo + k] = helper[k];
-        }
-
+        System.arraycopy(helper, 0, arr, low, helper.length);
     }
-
-
 }

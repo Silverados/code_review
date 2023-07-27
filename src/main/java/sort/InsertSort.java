@@ -1,17 +1,17 @@
 package sort;
 
-public class InsertSort implements SortTemplate{
+public class InsertSort implements SortAlgorithm {
     @Override
-    public void sort(int[] arr) {
-        if(arr == null || arr.length < 2) {
-            return;
-        }
+    public void sort(int[] arr, int low, int high) {
+        for (int i = low + 1; i < high; i++) {
+            int base = arr[i];
+            int j = i - 1;
+            for (; j >= 0 && base < arr[j]; j--) {
+                arr[j + 1] = arr[j];
+            }
 
-        for (int i = 1; i < arr.length; i++) {
-            for (int j = 0; j < i; j++) {
-                if(arr[j] > arr[i]) {
-                    exch(arr, i, j);
-                }
+            if (j >= 0 && j != i - 1) {
+                arr[j] = base;
             }
         }
     }

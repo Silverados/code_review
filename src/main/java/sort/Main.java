@@ -5,13 +5,13 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         int[] arr = {0, -1, -99, -342, -4, 324, 3, 526, 32, 6};
-//        SortTemplate sortTemplate = new SelectSort();
-//        SortTemplate sortTemplate = new InsertSort();
-//        SortTemplate sortTemplate = new BubbleSort();
-//        SortTemplate sortTemplate = new CountSort();
-//        SortTemplate sortTemplate = new HeapSort();
-//        SortTemplate sortTemplate = new MergeSort();
-//        SortTemplate sortTemplate = new QuickSort();
+//        SortAlgorithm sortTemplate = new SelectSort();
+//        SortAlgorithm sortTemplate = new InsertSort();
+//        SortAlgorithm sortTemplate = new BubbleSort();
+//        SortAlgorithm sortTemplate = new CountSort();
+//        SortAlgorithm sortTemplate = new HeapSort();
+//        SortAlgorithm sortTemplate = new MergeSort();
+//        SortAlgorithm sortTemplate = new QuickSort();
 //        sortTemplate.sort(arr);
         sort(arr);
         System.out.println(Arrays.toString(arr));

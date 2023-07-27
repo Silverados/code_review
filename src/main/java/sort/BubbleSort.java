@@ -1,12 +1,12 @@
 package sort;
 
-public class BubbleSort implements SortTemplate{
+public class BubbleSort implements SortAlgorithm {
     @Override
-    public void sort(int[] arr) {
-        for(int i = arr.length - 1; i >= 0; i--) {
-            for(int j = 1; j <= i; j++) {
+    public void sort(int[] arr, int low, int high) {
+        for(int i = high - 1; i > low; i--) {
+            for(int j = low + 1; j <= i; j++) {
                 if(arr[j] < arr[j - 1]) {
-                    exch(arr, j, j - 1);
+                    swap(arr, j, j - 1);
                 }
             }
         }
