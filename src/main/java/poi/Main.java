@@ -1,11 +1,8 @@
 package poi;
 
-import org.apache.poi.ss.SpreadsheetVersion;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DataFormatter;
-import org.apache.poi.ss.util.AreaReference;
-import org.apache.poi.ss.util.CellReference;
 import org.apache.poi.xssf.usermodel.XSSFFormulaEvaluator;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -42,10 +39,9 @@ public class Main {
             System.out.println("Formula: " + cell.getCellFormula());
             System.out.println("Cache result type: " + cell.getCachedFormulaResultType());
             if (cell.getCachedFormulaResultType() == CellType.STRING) {
-                System.out.println("RichString: " + cell.getRichStringCellValue().getString());
-            }
-            else {
-                System.out.println(cell.getNumericCellValue());
+                return cell.getRichStringCellValue().getString();
+            } else {
+                return String.valueOf(cell.getNumericCellValue());
             }
         }
         return dataFormatter.formatCellValue(cell, formulaEvaluator);
